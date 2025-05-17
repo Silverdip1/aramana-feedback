@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aramana Feedback</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <img src="logo.png" class="logo" alt="Aramana Logo">
+    <h2>Share Your Feedback</h2>
+    <p class="subtitle">Enter your details to get exclusive offers🎉✨</p>
+
+    <form id="reviewForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+
+      <div class="phone-input">
+        <select id="countryCode" required>
+          <option value="+971">🇦🇪 +971</option>
+          <option value="+91">🇮🇳 +91</option>
+          <option value="+1">🇺🇸 +1</option>
+          <option value="+44">🇬🇧 +44</option>
+        </select>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+      </div>
+
+      <button type="submit">Continue to Review</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("reviewForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const code = document.getElementById("countryCode").value;
+      const phone = document.getElementById("phone").value;
+      const fullPhone = code + phone;
+
+      fetch("https://script.google.com/macros/s/AKfycbwSLIzUnMj3yJRzmQA3K-9v9SCJydHAwIHGbu4eyzudWRDsf5tg1H_v9csVpcD6eYEC4Q/exec", {
+        method: "POST",
+        body: JSON.stringify({ name, phone: fullPhone }),
+        contentType: "application/json"
+      }).then(res => {
+        window.location.href = "https://g.page/r/Ca0uQ_YWSMfZEBM/review"; // redirect to review
+      });
+    });
+  </script>
+
+</body>
+</html>
