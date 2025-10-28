@@ -27,46 +27,30 @@
         <input type="tel" id="phone" placeholder="Phone Number" required>
       </div>
 
-      <button id="submit">Continue to Review</button>
-    </form>
-  <div id="loader" style="display:none;">⏳ Redirecting...</div>
+         <button type="submit">Enter Review</button>
+  </form>
 
-<script>
-const form = document.getElementById("reviewForm");
-const submitBtn = document.getElementById("submit");
-const loader = document.getElementById("loader");
+  <div>
 
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
+  <script>
+    document.getElementById("reviewForm").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const code = document.getElementById("countryCode").value;
-  const phone = document.getElementById("phone").value;
-  const fullPhone = code + phone;
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
 
-  // Disable button + show loader
-  submitBtn.disabled = true;
-  loader.style.display = "block";
-
-  // Send data to Google Sheet
-  fetch("YOUR_WEB_APP_URL", {
-    method: "POST",
-    body: JSON.stringify({ name, phone: fullPhone }),
-    headers: { "Content-Type": "application/json" }
-  })
-  .then(res => {
-    // Redirect to Google Review
-    window.location.href = "YOUR_GOOGLE_REVIEW_LINK";
-  })
-  .catch(err => {
-    alert("Error saving data, please try again.");
-    submitBtn.disabled = false;
-    loader.style.display = "none";
-  });
-});
+      fetch("YOUR_WEB_APP_URL", {
+        method: "POST",
+        body: JSON.stringify({ name, phone }),
+        contentType: "application/json"
+      }).then(res => {
+        window.location.href = "YOUR_GOOGLE_REVIEW_LINK"; // ✅ redirect
+      });
+    });
   </script>
 </body>
 </html>
+
 
 
 
