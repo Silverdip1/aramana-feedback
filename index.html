@@ -41,12 +41,15 @@ document.getElementById("reviewForm").addEventListener("submit", function(e) {
   const fullPhone = code + phone;
 
   // send data asynchronously (no wait)
+const formData = new FormData();
+formData.append("name", name);
+formData.append("phone", fullPhone);
+
 fetch("https://script.google.com/macros/s/AKfycbw5LIzUnMtJ3yRzmQ3K-9V9SCydyH4wLH6ub4eyzudNRDsfsjttgH_v9CsVpcDCb6eYEC4Q/exec", {
   method: "POST",
   mode: "no-cors",
-  body: JSON.stringify({ name, phone: fullPhone }),
-  headers: { "Content-Type": "application/json" }
-  });
+  body: formData
+});
 
   // Immediately redirect (no wait for fetch)
   window.location.href = "https://g.page/r/CTK9d9LJWwMsEBM/review";
@@ -55,5 +58,6 @@ fetch("https://script.google.com/macros/s/AKfycbw5LIzUnMtJ3yRzmQ3K-9V9SCydyH4wLH
 
 </body>
 </html>
+
 
 
