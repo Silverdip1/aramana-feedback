@@ -1,4 +1,4 @@
-                                                                                                       <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -23,14 +23,13 @@
           <option value="+91">🇮🇳 +91</option>
           <option value="+1">🇺🇸 +1</option>
           <option value="+44">🇬🇧 +44</option>
-        </select>                                                                      
+        </select>
         <input type="tel" id="phone" placeholder="Phone Number" required>
       </div>
 
-         <button type="submit">Enter Review</button>
-  </form>
-
-  <div>
+      <button type="submit">Continue to Review</button>
+    </form>
+  </div>
 
   <script>
     document.getElementById("reviewForm").addEventListener("submit", function(e) {
@@ -39,26 +38,15 @@
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
 
-      fetch("YOUR_WEB_APP_URL", {
+      fetch("https://script.google.com/macros/s/AKfycbwSLIzUnMj3yJRzmQA3K-9v9SCJydHAwIHGbu4eyzudWRDsf5tg1H_v9csVpcD6eYEC4Q/exec", {
         method: "POST",
         body: JSON.stringify({ name, phone }),
         contentType: "application/json"
       }).then(res => {
-        window.location.href = "YOUR_GOOGLE_REVIEW_LINK"; // ✅ redirect
+        window.location.href = "https://g.page/r/CTK9d9LJWwMsEBM/review"; // ✅ redirect
       });
     });
   </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
