@@ -40,20 +40,22 @@ form.addEventListener("submit", e => {
   const phone = document.getElementById("phone").value;
   const fullPhone = code + phone;
 
-  const formData = new FormData();
-  formData.append("name", name);
-  formData.append("phone", fullPhone);
+const formData = new FormData();
+formData.append("name", name);
+formData.append("phone", fullPhone);
 
-  // Send without waiting
-  navigator.sendBeacon("https://script.google.com/macros/s/AKfycbwSLIzUnMj3yJRzmQA3K-9v9SCJydHAwIHGbu4eyzudWRDsf5tg1H_v9csVpcD6eYEC4Q/exec", formData);
-
-  // Redirect immediately
-  window.location.replace("https://g.page/r/CTK9d9LJWwMsEBM/review");
+fetch("https://script.google.com/macros/s/AKfycbwSLIzUnMj3yJRzmQA3K-9v9SCJydHAwIHGbu4eyzudWRDsf5tg1H_v9csVpcD6eYEC4Q/exec", {
+  method: "POST",
+  body: formData
+})
+.finally(() => {
+  window.location.href = "https://g.page/r/CTK9d9LJWwMsEBM/review";
 });
     });
   </script>
 </body>
 </html>
+
 
 
 
