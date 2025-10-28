@@ -45,19 +45,18 @@ const formData = new FormData();
 formData.append("name", name);
 formData.append("phone", fullPhone);
 
-fetch("https://script.google.com/macros/s/AKfycbxoPTGrMnciHmEBi9TefolpeQKq6RVt0wm0w6zJx2tAppVU5LJedB_2VIfbBC_7lPPAPw/exec", {
-  method: "POST",
-  mode: "no-cors",
-  body: formData
-});
-
-  // Immediately redirect (no wait for fetch)
-  window.location.href = "https://g.page/r/CTK9d9LJWwMsEBM/review";
-});
-</script>
-
+      fetch("https://script.google.com/macros/s/AKfycbwSLIzUnMj3yJRzmQA3K-9v9SCJydHAwIHGbu4eyzudWRDsf5tg1H_v9csVpcD6eYEC4Q/exec", {
+        method: "POST",
+        body: JSON.stringify({ name, phone }),
+        contentType: "application/json"
+      }).then(res => {
+        window.location.href = "https://g.page/r/CTK9d9LJWwMsEBM/review"; // ✅ redirect
+      });
+    });
+  </script>
 </body>
 </html>
+
 
 
 
